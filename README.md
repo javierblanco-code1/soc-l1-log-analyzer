@@ -19,3 +19,13 @@ Herramienta de automatización para Analistas SOC Level 1 diseñada para procesa
    ```bash
    git clone [https://github.com/TU_USUARIO/soc-l1-log-analyzer.git](https://github.com/TU_USUARIO/soc-l1-log-analyzer.git)
    cd soc-l1-log-analyzer
+2. Instalar dependencias:
+   Bash
+pip install -r requirements.txt
+3. Configurar la clave API:
+   Bash
+export GEMINI_API_KEY="tu_api_key_aqui"  # Linux/macOS
+set GEMINI_API_KEY="tu_api_key_aqui"     # Windows CMD
+4. Ejecutar el analizador:
+   Bash
+python log_analyzer.py
