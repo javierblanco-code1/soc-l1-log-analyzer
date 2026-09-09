@@ -1,0 +1,7 @@
+2026-09-08 10:14:02 SOC-SERVER sshd[1042]: Accepted password for user admin from 192.168.1.50 port 54322
+2026-09-08 10:15:11 SOC-SERVER sshd[1055]: Failed password for invalid user root from 203.0.113.45 port 41123
+2026-09-08 10:15:13 SOC-SERVER sshd[1055]: Failed password for invalid user root from 203.0.113.45 port 41124
+2026-09-08 10:15:15 SOC-SERVER sshd[1055]: Failed password for invalid user root from 203.0.113.45 port 41125
+2026-09-08 10:15:17 SOC-SERVER sshd[1055]: Failed password for invalid user root from 203.0.113.45 port 41126
+2026-09-08 10:20:00 SOC-SERVER web-app[2011]: HTTP GET /login.php - 200 OK - 192.168.1.10
+2026-09-08 10:22:30 SOC-SERVER web-app[2011]: HTTP POST /admin/config.php - 403 Forbidden - 198.51.100.99
