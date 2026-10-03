@@ -20,7 +20,7 @@ El extractor actual identifica patrones como:
 - `403 Forbidden`
 - `Unauthorized`
 
-Además, los casos documentados utilizan contexto de **IP + usuario + servicio + ventana temporal** para investigar actividad compatible con password guessing y phishing.
+Además, los casos documentados utilizan contexto de **IP + usuario + servicio + ventana temporal** para investigar actividad compatible con password guessing, phishing y endpoint execution.
 
 ### MITRE ATT&CK
 
@@ -66,7 +66,7 @@ Este repositorio incluye investigaciones de laboratorio documentadas de extremo 
 
 ## Case Study 001 — SSH Brute Force
 
-El caso documenta cuatro fallos de autenticación sobre SSH en un dataset sintético, junto con timeline, IOC, MITRE ATT&CK, severidad, criterios de escalamiento y limitaciones.
+Análisis de fallos de autenticación SSH con timeline, IOC, MITRE ATT&CK, severidad, criterios de escalamiento y limitaciones.
 
 - [Case Study 001](docs/CASE-STUDY-001-BRUTE-FORCE.md)
 - [SOC Ticket 001](docs/SOC-001-TICKET.md)
@@ -74,7 +74,7 @@ El caso documenta cuatro fallos de autenticación sobre SSH en un dataset sinté
 
 ## Case Study 002 — Phishing Investigation
 
-Investigación de un correo de phishing orientado a credential theft. El caso demuestra análisis de metadata, autenticación de correo, URL/IOC extraction, timeline, MITRE ATT&CK, severity assessment y respuesta recomendada.
+Investigación de un correo de phishing orientado a credential theft, con análisis de metadata, autenticación de correo, URL/IOC extraction, timeline, MITRE ATT&CK y respuesta recomendada.
 
 - [Case Study 002](docs/CASE-STUDY-002-PHISHING.md)
 - [Email Evidence](docs/evidence/CASE-002/email-sample.eml)
@@ -83,7 +83,19 @@ Investigación de un correo de phishing orientado a credential theft. El caso de
 - [SOC Ticket 002](docs/evidence/CASE-002/SOC-002-TICKET.md)
 - [Structured Triage](docs/evidence/CASE-002/triage.json)
 
-> **Nota:** Case Study 002 utiliza datos completamente sintéticos y dominios reservados para documentación. No se requiere ni recomienda interactuar con el enlace incluido.
+## Case Study 003 — Suspicious PowerShell / Process Discovery
+
+Investigación de endpoint centrada en process ancestry, PowerShell, encoded commands y ejecución mediante rundll32. Incluye evidencia, árbol de procesos, observables, timeline, MITRE ATT&CK, decisión de escalamiento y ticket SOC.
+
+- [Case Study 003](docs/CASE-STUDY-003-POWERSHELL.md)
+- [Endpoint Telemetry](docs/evidence/CASE-003/endpoint-telemetry.txt)
+- [Process Tree](docs/evidence/CASE-003/process-tree.md)
+- [Observable Inventory](docs/evidence/CASE-003/observables.md)
+- [Investigation Timeline](docs/evidence/CASE-003/timeline.md)
+- [SOC Ticket 003](docs/evidence/CASE-003/SOC-003-TICKET.md)
+- [Structured Triage](docs/evidence/CASE-003/triage.json)
+
+> **Nota:** Case Study 003 utiliza telemetría completamente sintética. El contenido del comando codificado está deliberadamente redactado.
 
 ## Estructura del proyecto
 
@@ -97,13 +109,10 @@ Investigación de un correo de phishing orientado a credential theft. El caso de
 │   ├── SOC-001-TICKET.md
 │   ├── CASE-001-triage.json
 │   ├── CASE-STUDY-002-PHISHING.md
+│   ├── CASE-STUDY-003-POWERSHELL.md
 │   └── evidence/
-│       └── CASE-002/
-│           ├── email-sample.eml
-│           ├── timeline.md
-│           ├── iocs.md
-│           ├── SOC-002-TICKET.md
-│           └── triage.json
+│       ├── CASE-002/
+│       └── CASE-003/
 └── README.md
 ```
 
@@ -113,7 +122,7 @@ Investigación de un correo de phishing orientado a credential theft. El caso de
 - El extractor no debe interpretarse como un SIEM completo.
 - La correlación por threshold/window está documentada como procedimiento de triaje y no como una regla nativa del parser actual.
 - La salida asistida por IA requiere validación del analista antes de tomar una decisión.
-- Los indicadores de phishing del Case Study 002 son simulados y no representan una campaña real.
+- Los indicadores y telemetría de los Case Studies 002 y 003 son simulados.
 
 ## Roadmap
 
@@ -126,7 +135,7 @@ Investigación de un correo de phishing orientado a credential theft. El caso de
 - [ ] Pipeline CI con tests.
 - [x] SOC Case Study 001 — SSH Brute Force.
 - [x] SOC Case Study 002 — Phishing Investigation.
-- [ ] SOC Case Study 003 — PowerShell / Process Discovery.
+- [x] SOC Case Study 003 — PowerShell / Process Discovery.
 
 ## Security Notes
 
@@ -134,4 +143,4 @@ Nunca subir API keys, tokens, credenciales reales ni logs que contengan PII. Usa
 
 ## Portfolio
 
-Este repositorio forma parte del portfolio SOC L1 de Javier Blanco y se utiliza como evidencia técnica de **log analysis, alert triage, phishing investigation, MITRE ATT&CK y Python automation**.
+Este repositorio forma parte del portfolio SOC L1 de Javier Blanco y se utiliza como evidencia técnica de **log analysis, alert triage, phishing investigation, endpoint triage, MITRE ATT&CK y Python automation**.
