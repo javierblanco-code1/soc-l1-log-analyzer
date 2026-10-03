@@ -1,0 +1,57 @@
+{
+  "case_id": "SOC-002",
+  "title": "Phishing Investigation",
+  "environment": "simulated_soc_lab",
+  "classification": "phishing",
+  "status": "closed",
+  "severity": "medium",
+  "confidence": "high",
+  "compromise_confirmed": false,
+  "attack_objective": "credential_theft",
+  "mitre_attack": [
+    {
+      "technique_id": "T1566.002",
+      "name": "Phishing: Spearphishing Link"
+    },
+    {
+      "technique_id": "T1204.001",
+      "name": "User Execution: Malicious Link"
+    }
+  ],
+  "iocs": [
+    {
+      "type": "email",
+      "value": "security-alert@example.com",
+      "confidence": "medium"
+    },
+    {
+      "type": "domain",
+      "value": "secure-mail.example.com",
+      "confidence": "high"
+    },
+    {
+      "type": "url",
+      "value": "https://secure-mail.example.com/verify?session=7f2a91c4",
+      "confidence": "high"
+    },
+    {
+      "type": "message_id",
+      "value": "<soc002-phish-001@example.com>",
+      "confidence": "medium"
+    }
+  ],
+  "authentication_results": {
+    "spf": "neutral",
+    "dkim": "none",
+    "dmarc": "fail"
+  },
+  "analyst_decision": "confirmed_phishing_no_confirmed_compromise",
+  "recommended_next_steps": [
+    "quarantine_matching_messages",
+    "block_identified_domain_and_url",
+    "search_for_additional_recipients",
+    "review_authentication_logs",
+    "escalate_if_credential_submission_or_account_compromise_is_found"
+  ],
+  "note": "All data is synthetic and intended for defensive training and portfolio demonstration."
+}
