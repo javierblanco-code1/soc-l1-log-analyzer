@@ -1,0 +1,15 @@
+CASE-003 — Synthetic Endpoint Telemetry
+Host: WS-SOC-014
+User: analyst-lab
+Timestamp: 2026-10-01T10:15:02Z
+
+10:15:02 explorer.exe -> WINWORD.EXE "Invoice_Q3.docm"
+10:15:17 WINWORD.EXE -> powershell.exe -NoProfile -EncodedCommand BASE64_REDACTED
+10:15:19 powershell.exe -> rundll32.exe shell32.dll,Control_RunDLL
+
+EDR alert:
+Rule: Office application spawned PowerShell with encoded command
+Severity: High
+Status: Opened for SOC L1 triage
+
+Note: All telemetry is synthetic. The encoded payload is intentionally redacted.
