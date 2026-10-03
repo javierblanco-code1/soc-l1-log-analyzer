@@ -20,7 +20,7 @@ El extractor actual identifica patrones como:
 - `403 Forbidden`
 - `Unauthorized`
 
-Además, el caso documentado de este repositorio utiliza contexto de **IP + usuario + servicio + ventana temporal** para investigar actividad compatible con password guessing.
+Además, los casos documentados utilizan contexto de **IP + usuario + servicio + ventana temporal** para investigar actividad compatible con password guessing y phishing.
 
 ### MITRE ATT&CK
 
@@ -58,13 +58,32 @@ Para las funciones que requieren una API, usar variables de entorno y **no** gua
 6. **Document** — registrar evidencia y decisión.
 7. **Escalate** — escalar cuando los criterios lo justifican.
 
-## Case Study 001
+---
 
-El caso completo de **SSH Password Guessing / Brute Force Detection** documenta cuatro fallos de autenticación sobre SSH en un dataset sintético, junto con timeline, IOC, MITRE ATT&CK, severidad, criterios de escalamiento y limitaciones.
+# SOC Case Studies
+
+Este repositorio incluye investigaciones de laboratorio documentadas de extremo a extremo.
+
+## Case Study 001 — SSH Brute Force
+
+El caso documenta cuatro fallos de autenticación sobre SSH en un dataset sintético, junto con timeline, IOC, MITRE ATT&CK, severidad, criterios de escalamiento y limitaciones.
 
 - [Case Study 001](docs/CASE-STUDY-001-BRUTE-FORCE.md)
 - [SOC Ticket 001](docs/SOC-001-TICKET.md)
 - [Structured Triage](docs/CASE-001-triage.json)
+
+## Case Study 002 — Phishing Investigation
+
+Investigación de un correo de phishing orientado a credential theft. El caso demuestra análisis de metadata, autenticación de correo, URL/IOC extraction, timeline, MITRE ATT&CK, severity assessment y respuesta recomendada.
+
+- [Case Study 002](docs/CASE-STUDY-002-PHISHING.md)
+- [Email Evidence](docs/evidence/CASE-002/email-sample.eml)
+- [Investigation Timeline](docs/evidence/CASE-002/timeline.md)
+- [IOC Inventory](docs/evidence/CASE-002/iocs.md)
+- [SOC Ticket 002](docs/evidence/CASE-002/SOC-002-TICKET.md)
+- [Structured Triage](docs/evidence/CASE-002/triage.json)
+
+> **Nota:** Case Study 002 utiliza datos completamente sintéticos y dominios reservados para documentación. No se requiere ni recomienda interactuar con el enlace incluido.
 
 ## Estructura del proyecto
 
@@ -76,16 +95,25 @@ El caso completo de **SSH Password Guessing / Brute Force Detection** documenta 
 ├── docs/
 │   ├── CASE-STUDY-001-BRUTE-FORCE.md
 │   ├── SOC-001-TICKET.md
-│   └── CASE-001-triage.json
+│   ├── CASE-001-triage.json
+│   ├── CASE-STUDY-002-PHISHING.md
+│   └── evidence/
+│       └── CASE-002/
+│           ├── email-sample.eml
+│           ├── timeline.md
+│           ├── iocs.md
+│           ├── SOC-002-TICKET.md
+│           └── triage.json
 └── README.md
 ```
 
 ## Limitaciones actuales
 
-- El dataset es sintético y pequeño.
+- Los datasets de los casos son sintéticos y pequeños.
 - El extractor no debe interpretarse como un SIEM completo.
 - La correlación por threshold/window está documentada como procedimiento de triaje y no como una regla nativa del parser actual.
 - La salida asistida por IA requiere validación del analista antes de tomar una decisión.
+- Los indicadores de phishing del Case Study 002 son simulados y no representan una campaña real.
 
 ## Roadmap
 
@@ -96,6 +124,9 @@ El caso completo de **SSH Password Guessing / Brute Force Detection** documenta 
 - [ ] Enriquecimiento automático de IPs/dominios.
 - [ ] Integración opcional con el proyecto VirusTotal.
 - [ ] Pipeline CI con tests.
+- [x] SOC Case Study 001 — SSH Brute Force.
+- [x] SOC Case Study 002 — Phishing Investigation.
+- [ ] SOC Case Study 003 — PowerShell / Process Discovery.
 
 ## Security Notes
 
@@ -103,4 +134,4 @@ Nunca subir API keys, tokens, credenciales reales ni logs que contengan PII. Usa
 
 ## Portfolio
 
-Este repositorio forma parte del portfolio SOC L1 de Javier Blanco y se utiliza como evidencia técnica de **log analysis, alert triage, MITRE ATT&CK y Python automation**.
+Este repositorio forma parte del portfolio SOC L1 de Javier Blanco y se utiliza como evidencia técnica de **log analysis, alert triage, phishing investigation, MITRE ATT&CK y Python automation**.
