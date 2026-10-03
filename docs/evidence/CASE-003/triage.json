@@ -1,0 +1,37 @@
+{
+  "case_id": "SOC-003",
+  "title": "Suspicious PowerShell / Process Discovery",
+  "environment": "simulated_soc_lab",
+  "classification": "suspicious_endpoint_execution",
+  "status": "escalate",
+  "severity": "high",
+  "confidence": "high",
+  "compromise_confirmed": false,
+  "observables": [
+    {"type":"file","value":"Invoice_Q3.docm","confidence":"medium"},
+    {"type":"process_chain","value":"WINWORD.EXE -> powershell.exe","confidence":"high"},
+    {"type":"process_chain","value":"powershell.exe -> rundll32.exe","confidence":"high"},
+    {"type":"argument","value":"-EncodedCommand","confidence":"high"},
+    {"type":"argument","value":"-NoProfile","confidence":"medium"}
+  ],
+  "mitre_attack": [
+    {"technique_id":"T1059.001","name":"Command and Scripting Interpreter: PowerShell"},
+    {"technique_id":"T1218.011","name":"System Binary Proxy Execution: Rundll32"},
+    {"technique_id":"T1204.002","name":"User Execution: Malicious File","status":"hypothesis"}
+  ],
+  "process_tree":[
+    "explorer.exe -> WINWORD.EXE",
+    "WINWORD.EXE -> powershell.exe",
+    "powershell.exe -> rundll32.exe"
+  ],
+  "analyst_decision":"escalate_for_endpoint_investigation",
+  "recommended_next_steps":[
+    "preserve_edr_and_windows_telemetry",
+    "collect_powershell_logging",
+    "validate_document_origin",
+    "search_process_chain_across_endpoints",
+    "review_network_connections",
+    "escalate_confirmed_compromise_indicators"
+  ],
+  "note":"All data is synthetic. Encoded payload content is intentionally redacted."
+}
