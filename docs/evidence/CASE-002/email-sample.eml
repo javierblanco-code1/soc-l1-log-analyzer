@@ -1,0 +1,20 @@
+From: Microsoft 365 Security <security-alert@example.com>
+To: analyst@example.org
+Date: Wed, 30 Sep 2026 14:32:11 +0000
+Subject: Urgent: Verify your account within 24 hours
+Message-ID: <soc002-phish-001@example.com>
+Reply-To: security-alert@example.com
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+
+SECURITY NOTICE
+
+Your account requires immediate verification.
+
+If you do not complete verification within 24 hours, access may be restricted.
+
+Verify your account:
+https://secure-mail.example.com/verify?session=7f2a91c4
+
+This message is part of a simulated SOC training scenario.
+No real credentials should be entered.
